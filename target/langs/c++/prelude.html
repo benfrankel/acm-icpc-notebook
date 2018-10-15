@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>C++ Prelude</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}a,a:visited,a:focus,a:active{text-decoration:none;}
+  
+  body {
+      line-height: 1.5;
+      text-rendering: optimizeLegibility !important;
+      font-size: 16px;
+      font-weight: 300;
+      color: #334;
+      padding: 1em;
+  }
+  
+  p {
+      word-spacing: 1px;
+  }
+  
+  /* Link */
+  a {
+      outline: 0;
+      color: dodgerblue;
+      text-decoration: none;
+      outline: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font: inherit;
+      padding: 0;
+  }
+  
+  /* Hovered or focused link */
+  a:hover,
+  a:active,
+  a:focus {
+      text-decoration: underline;
+  }
+  
+  /* Hovered, but not focused link */
+  a:hover,
+  a:active {
+      color: inherit;
+  }
+  
+  /* Headers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      font-weight: 700;
+      color: #302a48;
+      margin: .75em 0;
+      line-height: 1.2;
+  }
+  
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child,
+  h6:first-child {
+      margin-top: 0;
+  }
+  
+  h1 {
+      font-size: 300%;
+      letter-spacing: -1.25px;
+  }
+  
+  h2 {
+      font-size: 225%;
+      letter-spacing: -.75px;
+  }
+  
+  h3 {
+      font-size: 175%;
+      letter-spacing: -.25px;
+  }
+  
+  h4 {
+      font-size: 140%;
+  }
+  
+  h5 {
+      font-size: 115%;
+  }
+  
+  h6 {
+      font-size: 100%;
+  }
+  
+  /* Paragraphs */
+  p {
+      text-align: left;
+      margin-bottom: 1em;
+  }
+  
+  p:last-child {
+      margin-bottom: 0;
+  }
+  
+  /* Code */
+  code,
+  pre {
+      font-size: .93em;
+      font-weight: 400;
+      line-height: 1.2;
+      white-space: pre;
+  }
+  
+  /* Inline code */
+  code {
+      padding: .15em .5em;
+      background-color: #f5f5f7;
+      color: inherit;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+  }
+  
+  /* Code blocks */
+  pre {
+      max-width: 100%;
+      margin: 1.5rem 0 2.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+  }
+  
+  pre,
+  pre code {
+      background-color: #f5f5f7;
+      color: inherit;
+  }
+  
+  pre code {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+  }
+  
+  /* Inline code as a link */
+  a code {
+      color: #428bca;
+  }
+  
+  /* Inline code as a hovered link */
+  a code:hover {
+      text-decoration: underline;
+  }
+  
+  /* Lists */
+  ul,
+  ol,
+  dl {
+      padding: 0;
+      margin-left: .5rem;
+  }
+  
+  /* Definition list labels */
+  dt {
+      font-weight: bold;
+  }
+  
+  /* Definition list definitions */
+  dd {
+      margin-bottom: .5rem;
+  }
+  
+  /* Unordered lists */
+  ul {
+      list-style-type: disc;
+      list-style-position: outside;
+      margin-bottom: 1.25rem;
+  }
+  
+  /* Ordered lists */
+  ol {
+      list-style-type: decimal;
+      margin-bottom: 1.25rem;
+  }
+  
+  /* Ordered list items */
+  ol > li {
+      text-indent: .2rem;
+  }
+  
+  /* Nested lists */
+  li ul,
+  li ol,
+  li dl {
+      margin: 0;
+  }
+  
+  /* List items */
+  li {
+      margin: .35rem 0 .35rem 2.5rem;
+  }
+  
+  /* Emphasized text */
+  em {
+      font-style: italic;
+  }
+  
+  /* Strong text */
+  strong {
+      font-weight: 700;
+  }
+  
+  /* Simple horizontal rule */
+  hr {
+      margin: 2rem 0;
+      height: 1px;
+      border: none;
+      background-color: #e9e9e9;
+  }
+  
+  /* Abbreviations */
+  abbr {
+      font-size: .85rem;
+      font-weight: bold;
+      color: #666666;
+      text-transform: uppercase;
+  }
+  abbr[title] {
+      cursor: help;
+      border-bottom: 1px dotted #808080;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+      padding: 1rem 1.33rem;
+      margin: 1rem 0 1rem 1rem;
+      color: #585866;
+      font-size: 105%;
+      font-style: italic;
+      background-color: #fff;
+      border-left: .33em solid #c4e4f8;
+  }
+  
+  blockquote p:last-child {
+      margin-bottom: 0;
+  }
+  
+  /* Images */
+  img {
+      transition: all .12s;
+  }
+  
+  /* Image interactivity */
+  img:active,
+  img:focus {
+      margin-top: -8px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0px 8px 5px gray) contrast(105%);
+  }
+  
+  /* Figures */
+  figure {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1em -.4em;
+  }
+  
+  figure > * {
+      padding: .4em;
+  }
+  
+  /* Tables */
+  table {
+      margin-bottom: 1rem;
+      width: 100%;
+      border: 2px solid #eee;
+      border-collapse: collapse;
+  }
+  
+  td,
+  th {
+      padding: .25rem .5rem;
+      border: 1px solid #eee;
+  }
+  
+  tbody tr:nth-child(odd) td,
+  tbody tr:nth-child(odd) th {
+      background-color: #f2f2f6;
+  }
+  
+  /* Superscript & subscript */
+  sup,
+  sub {
+      font-size: .8em;
+  }
+  
+  /* Default */
+  body {
+      font-family: Merriweather, Georgia, 'Times New Roman', serif;
+  }
+  
+  /* Header */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+  }
+  
+  /* Code */
+  code,
+  pre,
+  kbd {
+      font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">C++ Prelude</h1>
+</header>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#include </span><span class="im">&lt;bits/stdc++.h&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">// Print array / vector?</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">// Print map?</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">// General pretty print?</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="pp">#define dbg</span>(x)<span class="pp"> </span>(cout<span class="pp"> </span>&lt;&lt;<span class="pp"> </span>(<span class="pp">#</span>x)<span class="pp"> </span>&lt;&lt;<span class="pp"> </span><span class="st">&quot; = &quot;</span><span class="pp"> </span>&lt;&lt;<span class="pp"> </span>(x)<span class="pp"> </span>&lt;&lt;<span class="pp"> </span><span class="ch">&#39;</span><span class="sc">\n</span><span class="ch">&#39;</span>,<span class="pp"> </span>(x))</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#define mod</span>(x,<span class="pp"> </span>m)<span class="pp"> </span>((((x)<span class="pp"> </span>%<span class="pp"> </span>(m))<span class="pp"> </span>+<span class="pp"> </span>(m))<span class="pp"> </span>%<span class="pp"> </span>(m))</a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="kw">typedef</span> pair&lt;<span class="dt">int</span>, <span class="dt">int</span>&gt; ii;</a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="kw">typedef</span> <span class="dt">long</span> <span class="dt">long</span> <span class="dt">long</span>;</a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="at">const</span> <span class="dt">double</span> pi = <span class="dv">2</span> * acos(<span class="fl">0.0</span>);</a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="at">const</span> <span class="dt">double</span> dinf = <span class="fl">1.0</span> / <span class="fl">0.0</span>;</a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="at">const</span> <span class="dt">int</span> iinf = numeric_limits&lt;<span class="dt">int</span>&gt;::max() &gt;&gt; <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="at">const</span> <span class="dt">long</span> linf = numeric_limits&lt;<span class="dt">long</span>&gt;::max() &gt;&gt; <span class="dv">2</span>;</a></code></pre></div>
+</body>
+</html>
