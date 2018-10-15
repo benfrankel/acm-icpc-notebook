@@ -45,6 +45,7 @@ help:
 
 $(PDF_FILE): $(html_files)
 	./print.js $(BIN_DIR)/$(HTML_DIR) $(BIN_DIR)/$(PDF_DIR) $(subst $(BIN_DIR)/$(HTML_DIR)/,,$(html_files))
+	pdfunite $(pdf_files) $(PDF_FILE)
 
 $(BIN_DIR)/$(HTML_DIR)/%.html: $(addprefix $(SRC_DIR)/,%.md) $(CSS_FILE)
 	pandoc -f markdown -t html --standalone --highlight-style kate -H $(CSS_FILE) $^ -o $@

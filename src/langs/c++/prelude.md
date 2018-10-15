@@ -7,8 +7,8 @@ using namespace std;
 #define dbg(x) (DEBUG ? _show((#x), (x)) : (x))
 #define mod(x, m) ((((x) % (m)) + (m)) % (m))
 template <class T> typename
-enable_if<!is_compound<typename remove_reference<T>::type>::value, string>::type _str(T& x)
-{ return to_string(x); }
+enable_if<!is_compound<typename remove_reference<T>::type>::value, string>::type _str(T& x) {
+    return to_string(x); }
 template <class T> typename
 enable_if< is_compound<typename remove_reference<T>::type>::value, string>::type _str(T& x) {
     stringstream s;
@@ -16,9 +16,7 @@ enable_if< is_compound<typename remove_reference<T>::type>::value, string>::type
     while (b != e) s << _str(*b++) << (b != e ? ", " : "");
     return '[' + s.str() + ']'; }
 template <> string _str(string& x) { return '"' + x + '"'; }
-template <class T> T& _show(string s, T&& x) {
-    cout << s << " = " << _str(x) << '\n';
-    return x; }
+template <class T> T& _show(string s, T&& x) { cout << s + " = " + _str(x) + '\n'; return x; }
 typedef pair<int, int> ii;
 typedef int64_t i64;
 typedef uint64_t u64;
