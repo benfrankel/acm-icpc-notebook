@@ -2,6 +2,12 @@
 
 const puppeteer = require('puppeteer');
 
+const sleep = ms => {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
 (async () => {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();

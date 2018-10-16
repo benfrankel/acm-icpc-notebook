@@ -6,6 +6,7 @@ PDF_DIR ?= pdf
 CSS_FILE ?= style.css
 PDF_FILE ?= notebook.pdf
 
+# Derive paths
 html_dir := $(BIN_DIR)/$(HTML_DIR)
 pdf_dir := $(BIN_DIR)/$(PDF_DIR)
 css_file := $(SRC_DIR)/$(CSS_FILE)
@@ -22,6 +23,9 @@ source_structure := $(shell find $(SRC_DIR) -type d)
 target_structure := $(subst $(SRC_DIR)/,$(html_dir)/,$(source_structure))
 target_structure += $(subst $(SRC_DIR)/,$(pdf_dir)/,$(source_structure))
 $(shell mkdir -p $(target_structure))
+
+# Pandoc flags
+PANDOC_FLAGS ?= -f markdown -t html5 --self-contained --highlight-style kate --css $(css_file) --katex='node_modules/katex/dist/'
 
 
 ###############
@@ -48,9 +52,12 @@ help:
 # BUILD RULES #
 ###############
 
-$(pdf_file): $(html_files)
-	./print.js $(html_dir) $(pdf_dir) $(subst $(html_dir)/,,$(html_files))
+$(pdf_file): $(pdf_files)
 	pdfunite $(pdf_files) $(pdf_file)
 
+$(pdf_dir)/%.pdf: $(addprefix $(html_dir)/,%.html)
+	./print.js $(html_dir) $(pdf_dir) $(subst $(html_dir)/,,$<)
+
+.SECONDARY: $(html_files)
 $(html_dir)/%.html: $(addprefix $(SRC_DIR)/,%.md) $(css_file)
-	pandoc -f markdown -t html --standalone --highlight-style kate -H $(css_file) $^ -o $@
+	pandoc $(PANDOC_FLAGS) $^ -o $@
