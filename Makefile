@@ -3,19 +3,24 @@ SRC_DIR ?= src
 BIN_DIR ?= build
 HTML_DIR ?= html
 PDF_DIR ?= pdf
-CSS_FILE ?= $(SRC_DIR)/style.css
-PDF_FILE ?= $(BIN_DIR)/notebook.pdf
+CSS_FILE ?= style.css
+PDF_FILE ?= notebook.pdf
+
+html_dir := $(BIN_DIR)/$(HTML_DIR)
+pdf_dir := $(BIN_DIR)/$(PDF_DIR)
+css_file := $(SRC_DIR)/$(CSS_FILE)
+pdf_file := $(BIN_DIR)/$(PDF_FILE)
 
 # Find source files
 source_files := $(shell find $(SRC_DIR) -name '*.md')
-html_files := $(subst $(SRC_DIR)/,$(BIN_DIR)/$(HTML_DIR)/,$(source_files:%.md=%.html))
-pdf_files := $(subst $(SRC_DIR)/,$(BIN_DIR)/$(PDF_DIR)/,$(source_files:%.md=%.pdf))
-target_files := $(html_files) $(pdf_files) $(PDF_FILE)
+html_files := $(subst $(SRC_DIR)/,$(html_dir)/,$(source_files:%.md=%.html))
+pdf_files := $(subst $(SRC_DIR)/,$(pdf_dir)/,$(source_files:%.md=%.pdf))
+target_files := $(html_files) $(pdf_files) $(pdf_file)
 
 # Prepare target directories if necessary
 source_structure := $(shell find $(SRC_DIR) -type d)
-target_structure := $(subst $(SRC_DIR)/,$(BIN_DIR)/$(HTML_DIR)/,$(source_structure))
-target_structure += $(subst $(SRC_DIR)/,$(BIN_DIR)/$(PDF_DIR)/,$(source_structure))
+target_structure := $(subst $(SRC_DIR)/,$(html_dir)/,$(source_structure))
+target_structure += $(subst $(SRC_DIR)/,$(pdf_dir)/,$(source_structure))
 $(shell mkdir -p $(target_structure))
 
 
@@ -27,7 +32,7 @@ $(shell mkdir -p $(target_structure))
 default: all
 
 .PHONY: all ## Build everything (default)
-all: $(PDF_FILE)
+all: $(pdf_file)
 
 .PHONY: clean ## Remove all generated files
 clean:
@@ -43,9 +48,9 @@ help:
 # BUILD RULES #
 ###############
 
-$(PDF_FILE): $(html_files)
-	./print.js $(BIN_DIR)/$(HTML_DIR) $(BIN_DIR)/$(PDF_DIR) $(subst $(BIN_DIR)/$(HTML_DIR)/,,$(html_files))
-	pdfunite $(pdf_files) $(PDF_FILE)
+$(pdf_file): $(html_files)
+	./print.js $(html_dir) $(pdf_dir) $(subst $(html_dir)/,,$(html_files))
+	pdfunite $(pdf_files) $(pdf_file)
 
-$(BIN_DIR)/$(HTML_DIR)/%.html: $(addprefix $(SRC_DIR)/,%.md) $(CSS_FILE)
-	pandoc -f markdown -t html --standalone --highlight-style kate -H $(CSS_FILE) $^ -o $@
+$(html_dir)/%.html: $(addprefix $(SRC_DIR)/,%.md) $(css_file)
+	pandoc -f markdown -t html --standalone --highlight-style kate -H $(css_file) $^ -o $@
