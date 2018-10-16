@@ -1,4 +1,4 @@
-% Dijkstra's Algorithm
+% Dijkstra
 
 <div class="no-stretch">
 |         |                        |

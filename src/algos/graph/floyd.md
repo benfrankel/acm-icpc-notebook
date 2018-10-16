@@ -1,4 +1,4 @@
-% Floyd-Warshall algorithm
+% Floyd-Warshall
 
 <div class="no-stretch">
 |         |         |
