@@ -1,5 +1,12 @@
 % Dijkstra's Algorithm
 
+<div class="no-stretch">
+|         |                        |
+|---------|------------------------|
+|__Time__ | $(|E| + |V|)\log{|V|}$ |
+|__Space__| $|V|^2$                |
+</div>
+
 ## Data Structures
 | Name      | Type                                | Initial Value        |
 |:---------:|:-----------------------------------:|:--------------------:|
@@ -33,9 +40,3 @@ while (!front.empty()) {
 
 ## Result
 `dist[v]` contains the distance from `start` to `v`, or `INF` if not connected.
-
-## Complexity
-|         |                     |
-|---------|---------------------|
-|__Time__ | $m + N\log{N}$ |
-|__Space__| $n^2$ |

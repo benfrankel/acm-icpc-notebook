@@ -72,28 +72,25 @@ h6:first-child {
 }
 
 h1 {
-    font-size: 275%;
+    font-size: 225%;
     letter-spacing: -1.25px;
 }
 
 h2 {
-    font-size: 225%;
+    font-size: 175%;
     letter-spacing: -.75px;
 }
 
 h3 {
-    font-size: 160%;
+    font-size: 140%;
     letter-spacing: -.25px;
 }
 
 h4 {
-    font-size: 130%;
+    font-size: 115%;
 }
 
-h5 {
-    font-size: 110%;
-}
-
+h5,
 h6 {
     font-size: 100%;
 }
@@ -253,14 +250,6 @@ img {
     transition: all 0.12s;
 }
 
-/* Image interactivity */
-img:active,
-img:focus {
-    margin-top: -8px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0px 8px 5px gray) contrast(105%);
-}
-
 /* Figures */
 figure {
     display: flex;
@@ -272,10 +261,14 @@ figure > * {
     padding: 0.4em;
 }
 
+.no-stretch > * {
+    width: auto;
+}
+
 /* Tables */
 table {
-    margin-bottom: 1rem;
     width: 100%;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-collapse: collapse;
 }
@@ -283,7 +276,6 @@ table {
 table code {
     border: none;
     background-color: inherit;
-    font-size: 1em;
 }
 
 td,

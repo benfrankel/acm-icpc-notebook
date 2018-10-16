@@ -1,9 +1,16 @@
 % Floyd-Warshall algorithm
 
+<div class="no-stretch">
+|         |         |
+|---------|---------|
+|__Time__ | $|V|^3$ |
+|__Space__| $|V|^2$ |
+</div>
+
 ## Data Structures
-| Name      | Type                                | Initial Value                    |
-|:---------:|:-----------------------------------:|:--------------------------------:|
-| `dist`    | `Map<(Vertex, Vertex), Distance>`   | `{_: INF, (u, v): w, (v, v): 0}` |
+| Name   | Type                                | Initial Value                    |
+|:------:|:-----------------------------------:|:--------------------------------:|
+| `dist` | `Map<(Vertex, Vertex), Distance>`   | `{_: INF, (u, v): w, (v, v): 0}` |
 
 ## Algorithm
 ```c++
@@ -18,9 +25,3 @@ for (Vertex m : V) {
 
 ## Result
 `dist[u][v]` contains the distance from `u` to `v`, or `INF` if not connected.
-
-## Complexity
-|         |         |
-|---------|---------|
-|__Time__ | $|V|^3$ |
-|__Space__| $|V|^2$ |

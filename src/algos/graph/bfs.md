@@ -1,5 +1,12 @@
 % BFS
 
+<div class="no-stretch">
+|         |             |
+|---------|-------------|
+|__Time__ | $|V| + |E|$ |
+|__Space__| $|V|$       |
+</div>
+
 ## Data Structures
 | Name    | Type            | Initial Value |
 |:-------:|:---------------:|:-------------:|
