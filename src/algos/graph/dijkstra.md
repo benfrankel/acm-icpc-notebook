@@ -32,7 +32,7 @@ while (!front.empty()) {
             dist[v] = r;
             prev[v] = u;
             
-            // Relax u -> v
+            // Relax u → v
             
             front.push((r, v));
         }
@@ -45,4 +45,5 @@ while (!front.empty()) {
 - `prev[v]` is the penultimate vertex on **some** shortest path from `start` to `v` (if they are connected).
 
 ## Notes
+- In C++, `set` can be used as a `PriorityQueue` with an efficient `update_priority`.
 - Fails on graphs with negative edges.

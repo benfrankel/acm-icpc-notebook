@@ -16,7 +16,7 @@
 
 ## Algorithm
 ```c++
-Map<Vertex, Weight> height = BellmanFord(adjusted, q);
+Map<Vertex, Distance> height = BellmanFord(adjusted, q);
 adjusted.remove(q);
 
 // Reweighting

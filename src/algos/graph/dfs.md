@@ -30,7 +30,7 @@ while (!backtrack.empty()) {
     for (Vertex v : E[u]) {
         if (visited.has(v)) continue;
         
-        // Follow u -> v
+        // Follow u → v
         
         backtrack.push(v);
         follow = true;

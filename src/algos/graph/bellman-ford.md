@@ -23,7 +23,7 @@ for (|V| - 1) {
             dist[v] = dist[u] + w;
             prev[v] = u;
             
-            // Relax u -> v
+            // Relax u → v
         }
     }
 }

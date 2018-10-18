@@ -25,7 +25,7 @@ while (!front.empty()) {
         if (seen.has(v)) continue;
         seen.add(v);
         
-        // See u -> v
+        // See u → v
         
         front.push(v);
     }

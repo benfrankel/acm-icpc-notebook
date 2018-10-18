@@ -12,7 +12,7 @@
 |:---------:|:-------------------------------------:|:--------------:|
 | `front`   | `PriorityQueue<(Weight, Vertex)>`     | `[(0, start)]` |
 | `visited` | `Set<Vertex>`                         | `{}`           |
-| `prev`    | `Map<Vertex, Vertex>`                 | `{}`           |
+| `parent`  | `Map<Vertex, Vertex>`                 | `{}`           |
 | `dist`    | `Map<Vertex, Weight>`                 | `{}`           |
 | `tree`    | `Map<Vertex, List<(Weight, Vertex)>>` | `{}`           |
 
@@ -27,18 +27,19 @@ while (!front.empty()) {
     
     // Visit u
     
-    if (prev.has(u)) {
-        tree[u].push((w, prev[u]));
+    if (parent.has(u)) {
+        tree[u].push((w, parent[u]));
+        tree[parent[u]].push((w, u));
         
-        // Add edge prev[u] -> u
+        // Connect parent[u] to u
     }
     
     for ((Vertex v, Weight x) : E[u]) {
         if (!dist.has(v) || dist[v] > x) {
             dist[v] = x;
-            prev[v] = u;
+            parent[v] = u;
             
-            // Relax u -> v
+            // Relax u → v
             
             front.push((x, v));
         }
@@ -48,3 +49,6 @@ while (!front.empty()) {
 
 ## Results
 - `tree` is **some** MST of `start`'s connected component.
+
+## Notes
+- In C++, `set` can be used as a `PriorityQueue` with an efficient `update_priority`.

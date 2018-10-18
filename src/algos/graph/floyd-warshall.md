@@ -24,7 +24,7 @@ for (Vertex m : V) {
                 dist[u, v] = dist[u, m] + dist[m, v];
                 next[u, v] = next[u, m];
                 
-                // Relax u -> v through m
+                // Relax u → v through m
             }
         }
     }
