@@ -29,6 +29,14 @@ for (Vertex m : V) {
         }
     }
 }
+
+for (Vertex v : V) {
+    if (dist[v, v] < 0) {
+        return false; // Negative cycle detected
+    }
+}
+
+return true;
 ```
 
 ## Results
@@ -37,4 +45,4 @@ for (Vertex m : V) {
 
 ## Notes
 - Johnson's Algorithm is faster for sparse graphs.
-- Fails on graphs with negative cycles.
+- Fails on negative cycles (detected).

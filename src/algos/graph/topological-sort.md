@@ -49,4 +49,4 @@ return true;
 - `i < j` implies there is no path from `topo[i]` to `topo[j]` (reverse topological order).
 
 ## Notes
-- Fails on graphs with cycles.
+- Impossible with cycles (detected).

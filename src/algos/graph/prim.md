@@ -13,7 +13,7 @@
 | `front`   | `PriorityQueue<(Weight, Vertex)>`     | `[(0, start)]` |
 | `visited` | `Set<Vertex>`                         | `{}`           |
 | `parent`  | `Map<Vertex, Vertex>`                 | `{}`           |
-| `dist`    | `Map<Vertex, Weight>`                 | `{}`           |
+| `cost`    | `Map<Vertex, Weight>`                 | `{}`           |
 | `tree`    | `Map<Vertex, List<(Weight, Vertex)>>` | `{}`           |
 
 ## Algorithm
@@ -35,8 +35,8 @@ while (!front.empty()) {
     }
     
     for ((Vertex v, Weight x) : E[u]) {
-        if (!dist.has(v) || dist[v] > x) {
-            dist[v] = x;
+        if (!cost.has(v) || cost[v] > x) {
+            cost[v] = x;
             parent[v] = u;
             
             // Relax u → v
@@ -51,4 +51,4 @@ while (!front.empty()) {
 - `tree` is **some** MST of `start`'s connected component.
 
 ## Notes
-- In C++, `set` can be used as a `PriorityQueue` with an efficient `update_priority`.
+- Fails on directed graphs.

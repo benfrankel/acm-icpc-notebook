@@ -11,12 +11,13 @@
 | Name       | Type                                  | Initial Value        |
 |:----------:|:-------------------------------------:|:--------------------:|
 | `adjusted` | `Map<Vertex, List<(Weight, Vertex)>>` | `G + {q: [V(0, v)]}` |
+| `height`   | `Map<Vertex, Distance>`               | `{}`                 |
 | `prev?`    | `Map<Vertex, Map<Vertex, Vertex>>`    | `{}`                 |
 | `dist`     | `Map<Vertex, Map<Vertex, Distance>>`  | `{}`                 |
 
 ## Algorithm
 ```c++
-Map<Vertex, Distance> height = BellmanFord(adjusted, q);
+if (!BellmanFord(adjusted, &height, q)) return false;
 adjusted.remove(q);
 
 // Reweighting
@@ -30,6 +31,8 @@ for (Vertex u : V) {
 for (Vertex v : V) {
     (dist[v], prev[v]) = Dijkstra(adjusted, v);
 }
+
+return true;
 ```
 
 ## Results
@@ -38,4 +41,4 @@ for (Vertex v : V) {
 
 ## Notes
 - Bellman-Ford & reweighting can be skipped for graphs with non-negative edges.
-- Can detect negative cycles during Bellman-Ford.
+- Fails on negative cycles (detected during Bellman-Ford).

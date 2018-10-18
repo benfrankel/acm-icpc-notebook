@@ -45,3 +45,4 @@ return true;
 ## Notes
 - The extra iteration will relax some vertex iff a negative cycle is reachable from `start`.
 - `|V| - 1` extra iterations will relax `v` iff there is a negative cycle between `start` and `v`.
+- Fails on negative cycles (detected).
