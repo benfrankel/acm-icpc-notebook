@@ -10,27 +10,27 @@
 ## Data Structures
 | Name    | Type            | Initial Value |
 |:-------:|:---------------:|:-------------:|
-| `seen`  | `Set<Vertex>`   | `{start}`     |
 | `front` | `Queue<Vertex>` | `[start]`     |
+| `seen`  | `Set<Vertex>`   | `{start}`     |
 
 ## Algorithm
 ```c++
 while (!front.empty()) {
-    Vertex v = front.top();
+    Vertex u = front.top();
     front.pop();
     
-    // Visit v
+    // Visit u
     
-    for (Vertex u : adj[v]) {
-        if (!seen[u]) {
-            seen.add(u);
-            front.push(u);
-            
-            // See v -> u
-        }
+    for (Vertex v : E[u]) {
+        if (seen.has(v)) continue;
+        seen.add(v);
+        
+        // See u -> v
+        
+        front.push(v);
     }
 }
 ```
 
-## Result
-`seen[v]` is `true` when `v` is reachable from `start`.
+## Results
+- `seen` is the set of vertices connected to `start`.

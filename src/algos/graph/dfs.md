@@ -10,37 +10,39 @@
 ## Data Structures
 | Name        | Type            | Initial Value |
 |:-----------:|:---------------:|:-------------:|
-| `visited`   | `Set<Vertex>`   | `{}`          |
 | `backtrack` | `Stack<Vertex>` | `[start]`     |
+| `visited`   | `Set<Vertex>`   | `{}`          |
 
 ## Algorithm
 ```c++
-forward:
 while (!backtrack.empty()) {
-    Vertex v = backtrack.top();
+    Vertex u = backtrack.top();
     
-    if (!visited[v]) {
-        visited.add(v);
+    if (!visited.has(u)) {
+        visited.add(u);
         
-        // Start visiting v
+        // Start visiting u
     } else {
-        // Backtrack to v
+        // Backtrack to u
     }
     
-    for (Vertex u : adj[v]) {
-        if (!visited[u]) {
-            // Follow v -> u
-            
-            backtrack.push(u);
-            continue forward;
-        }
+    bool follow = false;
+    for (Vertex v : E[u]) {
+        if (visited.has(v)) continue;
+        
+        // Follow u -> v
+        
+        backtrack.push(v);
+        follow = true;
+        break;
     }
+    if (follow) continue;
     
-    // Finish visiting v
+    // Finish visiting u
     
     backtrack.pop();
 }
 ```
 
-## Result
-`visited[v]` is `true` when `v` is reachable from `start`.
+## Results
+- `visited` is the set of vertices connected to `start`.

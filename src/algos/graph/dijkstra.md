@@ -1,4 +1,4 @@
-% Dijkstra
+% Dijkstra's Algorithm
 
 <div class="no-stretch">
 |         |                        |
@@ -8,35 +8,41 @@
 </div>
 
 ## Data Structures
-| Name      | Type                                | Initial Value        |
-|:---------:|:-----------------------------------:|:--------------------:|
-| `visited` | `Set<Vertex>`                       | `{}`                 |
-| `front`   | `PriorityQueue<(Distance, Vertex)>` | `[(0, start)]`       |
-| `dist`    | `Map<Vertex, Distance>`             | `{_: INF, start: 0}` |
+| Name      | Type                                | Initial Value  |
+|:---------:|:-----------------------------------:|:--------------:|
+| `front`   | `PriorityQueue<(Distance, Vertex)>` | `[(0, start)]` |
+| `visited` | `Set<Vertex>`                       | `{}`           |
+| `prev?`   | `Map<Vertex, Vertex>`               | `{}`           |
+| `dist`    | `Map<Vertex, Distance>`             | `{start: 0}`   |
 
 ## Algorithm
 ```c++
 while (!front.empty()) {
-    (Distance d, Vertex v) = front.top();
+    (Distance d, Vertex u) = front.top();
     front.pop();
     
-    if (visited[v]) continue;
+    if (visited.has(u)) continue;
+    visited.add(u);
     
-    // Visit v
+    // Visit u
     
-    for ((Vertex u, Weight w) : adj[v]) {
-        if (!visited[u]) {
-            // Relax v -> u
-        
-            Distance n = d + w;
-            if (dist[u] > n) {
-                dist[u] = n;
-                front.push((n, u));
-            }
+    for ((Vertex v, Weight w) : E[u]) {
+        Distance r = d + w;
+        if (!dist.has(v) || dist[v] > r) {
+            dist[v] = r;
+            prev[v] = u;
+            
+            // Relax u -> v
+            
+            front.push((r, v));
         }
     }
 }
 ```
 
-## Result
-`dist[v]` contains the distance from `start` to `v`, or `INF` if not connected.
+## Results
+- `dist[v]` is the distance from `start` to `v` (if they are connected).
+- `prev[v]` is the penultimate vertex on **some** shortest path from `start` to `v` (if they are connected).
+
+## Notes
+- Fails on graphs with negative edges.
