@@ -3,23 +3,35 @@
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
+
 #define DEBUG 1
-#define dbg(x) (DEBUG ? _show((#x), (x)) : (x))
+#define dbg(x) (DEBUG ? _d((#x), (x)) : (x))
 #define mod(x, m) ((((x) % (m)) + (m)) % (m))
-template <class T> typename
-enable_if<!is_compound<typename remove_reference<T>::type>::value, string>::type _str(T& x) {
-    return to_string(x); }
-template <class T> typename
-enable_if< is_compound<typename remove_reference<T>::type>::value, string>::type _str(T& x) {
-    stringstream s;
-    auto b = begin(x), e = end(x);
-    while (b != e) s << _str(*b++) << (b != e ? ", " : "");
-    return '[' + s.str() + ']'; }
-template <> string _str(string& x) { return '"' + x + '"'; }
-template <class T> T& _show(string s, T&& x) { cout << s + " = " + _str(x) + '\n'; return x; }
+#define _f (k ? '\n' + string(f, ' ') : "")
+
+template <class T> auto _s(T x,...) -> decltype(to_string(x)) { return to_string(x); }
+string _s(char x,...) { return string("'") + x + "'"; }
+string _s(string x,...) { return '"' + x + '"'; }
+
+template <class P, class Q> string _s(pair<P, Q> x, int f=0, int k=0) {
+    return _f + '(' + _s(x.first) + ", " + _s(x.second) + ')';
+}
+
+template <class T> auto _s(T x, int f=0, int k=0) -> decltype(end(x), string()) {
+    string s; int i = 0; auto b = begin(x), e = end(x);
+    while (b != e) s += _s(*b++, f+1, i++), s += (b == e ? "" : ", ");
+    return _f + '[' + s + ']';
+}
+
+template <class T> T& _d(string s, T&& x) {
+    cout << s + " = " + _s(x, s.size() + 3) + '\n'; return x;
+}
+
+typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef int64_t i64;
 typedef uint64_t u64;
+
 const double pi = 2 * acos(0.0);
 const double dinf = 1.0 / 0.0;
 const int inf = numeric_limits<int>::max() >> 2;

@@ -36,7 +36,7 @@ return true;
 ```
 
 ## Results
-- `dist[u][v]` is the distance from `u` to `v` (if they are connected).
+- `dist[u][v] - height[u] + height[v]` is the distance from `u` to `v` (if they are connected).
 - `prev[u][v]` is the penultimate vertex on **some** shortest path from `u` to `v` (if they are connected).
 
 ## Notes
