@@ -1,19 +1,17 @@
 % Knapsack
 
-Given $0 \le\!W$, $[1 \le v_1, \dots, v_N]$, and $[1 \le w_1, \dots, w_N]$, maximize $\sum\limits^N v_i x_i$ with $\sum\limits^N w_i x_i \le W$.
+Given $0 \le\!W$, $[1 \le v_1, \dots, v_N]$, and $[1 \le w_1, \dots, w_N]$, maximize $\sum v_i x_i$ with $\sum w_i x_i \le W$.
 
 ## 0/1 Knapsack
 
 When $0 \le x_i \le 1$.
 
 <div class="no-stretch">
-|           |                                                          |
-|-----------|----------------------------------------------------------|
-| __Time__  | $O(NW)$                                                  |
-| __Space__ | $O(W)$ (store $\mathrm{dp}[n]$ and $\mathrm{dp}[n - 1]$) |
+|           |                                     |
+|-----------|-------------------------------------|
+| __Time__  | $O(NW)$                             |
+| __Space__ | $O(W)$ (store $\mathrm{dp}[n - 1]$) |
 </div>
-
-### Solution
 
 Let $\mathrm{dp}[n][w]$ be the solution when $W\!= w$ and $N = n$.
 
@@ -28,10 +26,8 @@ When $0 \le x_i \le k$.
 |           |                                                          |
 |-----------|----------------------------------------------------------|
 | __Time__  | $O(kNW)$                                                 |
-| __Space__ | $O(W)$ (store $\mathrm{dp}[n]$ and $\mathrm{dp}[n - 1]$) |
+| __Space__ | $O(W)$ (store $\mathrm{dp}[n - 1]$) |
 </div>
-
-### Solution
 
 Solve the 0/1 knapsack problem where each $v_i$, $w_i$ implicitly appears $k$ times ($N' = kN$).
 
@@ -45,8 +41,6 @@ When $0 \le x_i < \infty$.
 | __Time__  | $O(W)$ |
 | __Space__ | $O(W)$ |
 </div>
-
-### Solution
 
 Let $\mathrm{dp}[w]$ be the solution when $W\!\!= w$.
 
