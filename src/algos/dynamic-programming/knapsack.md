@@ -16,7 +16,7 @@ When $0 \le x_i \le 1$.
 Let $\mathrm{dp}[n][w]$ be the solution when $W\!= w$ and $N = n$.
 
 - $\mathrm{dp}[0][w] = 0$
-- $\mathrm{dp}[n][w] = \max\left(\mathrm{dp}[n - 1][w],\, \mathrm{dp}[n - 1][w - w_i] + v_i\right)$ (for $w \ge w_i$)
+- $\mathrm{dp}[n][w] = \max\left(\mathrm{dp}[n - 1][w],\, \max\limits_{1\le i\le N}\left\{\mathrm{dp}[n - 1][w - w_i] + v_i : w\ge w_i\right\}\right)$
 
 ## Bounded Knapsack
 
@@ -36,13 +36,16 @@ Solve the 0/1 knapsack problem where each $v_i$, $w_i$ implicitly appears $k$ ti
 When $0 \le x_i < \infty$.
 
 <div class="no-stretch">
-|           |        |
-|-----------|--------|
-| __Time__  | $O(W)$ |
-| __Space__ | $O(W)$ |
+|           |         |
+|-----------|---------|
+| __Time__  | $O(NW)$ |
+| __Space__ | $O(W)$  |
 </div>
 
 Let $\mathrm{dp}[w]$ be the solution when $W\!\!= w$.
 
 - $\mathrm{dp}[0] = 0$
-- $\mathrm{dp}[w] = \max\limits_{1\le i\le N}\left\{\mathrm{dp}[w - w_i] + v_i\right\}$ (for $w \ge w_i$)
+- $\mathrm{dp}[w] = \max\limits_{1\le i\le N}\left\{\mathrm{dp}[w - w_i] + v_i : w\ge w_i\right\}$
+
+## Notes
+- Divide $w_1, \dots, w_n, W$ by their GCD to improve complexity in some cases.

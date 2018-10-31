@@ -32,8 +32,9 @@ typedef pair<int, int> ii;
 typedef int64_t i64;
 typedef uint64_t u64;
 
-const double pi = 2 * acos(0.0);
-const double dinf = 1.0 / 0.0;
+const double eps = 1e-9;
+const double pi = 2 * acos(0);
+const double dinf = 1 / 0.0;
 const int inf = numeric_limits<int>::max() >> 2;
 const long linf = numeric_limits<i64>::max() >> 2;
 ```
