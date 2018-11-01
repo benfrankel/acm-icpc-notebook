@@ -7,10 +7,10 @@ Given $0 \le\!W$, $[1 \le v_1, \dots, v_N]$, and $[1 \le w_1, \dots, w_N]$, maxi
 When $0 \le x_i \le 1$.
 
 <div class="no-stretch">
-|           |                                     |
-|-----------|-------------------------------------|
-| __Time__  | $O(NW)$                             |
-| __Space__ | $O(W)$ (store $\mathrm{dp}[n - 1]$) |
+|           |                                  |
+|-----------|----------------------------------|
+| __Time__  | $NW$                             |
+| __Space__ | $W$ (store $\mathrm{dp}[n - 1]$) |
 </div>
 
 Let $\mathrm{dp}[n][w]$ be the solution when $W\!= w$ and $N = n$.
@@ -23,10 +23,10 @@ Let $\mathrm{dp}[n][w]$ be the solution when $W\!= w$ and $N = n$.
 When $0 \le x_i \le k$.
 
 <div class="no-stretch">
-|           |                                                          |
-|-----------|----------------------------------------------------------|
-| __Time__  | $O(kNW)$                                                 |
-| __Space__ | $O(W)$ (store $\mathrm{dp}[n - 1]$) |
+|           |                                  |
+|-----------|----------------------------------|
+| __Time__  | $kNW$                            |
+| __Space__ | $W$ (store $\mathrm{dp}[n - 1]$) |
 </div>
 
 Solve the 0/1 knapsack problem where each $v_i$, $w_i$ implicitly appears $k$ times ($N' = kN$).
@@ -36,10 +36,10 @@ Solve the 0/1 knapsack problem where each $v_i$, $w_i$ implicitly appears $k$ ti
 When $0 \le x_i < \infty$.
 
 <div class="no-stretch">
-|           |         |
-|-----------|---------|
-| __Time__  | $O(NW)$ |
-| __Space__ | $O(W)$  |
+|           |      |
+|-----------|------|
+| __Time__  | $NW$ |
+| __Space__ | $W$  |
 </div>
 
 Let $\mathrm{dp}[w]$ be the solution when $W\!\!= w$.

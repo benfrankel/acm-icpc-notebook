@@ -1,10 +1,10 @@
 % Floyd-Warshall
 
 <div class="no-stretch">
-|         |         |
-|---------|---------|
-|__Time__ | $|V|^3$ |
-|__Space__| $|V|^2$ |
+|         |           |
+|---------|-----------|
+|__Time__ | ${|V|}^3$ |
+|__Space__| ${|V|}^2$ |
 </div>
 
 ## Data Structures
