@@ -1,5 +1,5 @@
 % Polygon
 
 ```c++
-/* TODO */
+// TODO
 ```

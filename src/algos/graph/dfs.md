@@ -8,15 +8,15 @@
 </div>
 
 ## Data Structures
-| Name        | Type            | Initial Value |
-|:-----------:|:---------------:|:-------------:|
-| `backtrack` | `Stack<Vertex>` | `[start]`     |
-| `visited`   | `Set<Vertex>`   | `{}`          |
+| Name      | Type            | Initial Value |
+|:---------:|:---------------:|:-------------:|
+| `back`    | `Stack<Vertex>` | `[start]`     |
+| `visited` | `Set<Vertex>`   | `{}`          |
 
 ## Algorithm
 ```c++
-while (!backtrack.empty()) {
-    Vertex u = backtrack.top();
+while (!back.empty()) {
+    Vertex u = back.top();
     
     if (!visited.has(u)) {
         visited.add(u);
@@ -32,7 +32,7 @@ while (!backtrack.empty()) {
         
         // Follow u → v
         
-        backtrack.push(v);
+        back.push(v);
         follow = true;
         break;
     }
@@ -40,7 +40,7 @@ while (!backtrack.empty()) {
     
     // Finish visiting u
     
-    backtrack.pop();
+    back.pop();
 }
 ```
 
