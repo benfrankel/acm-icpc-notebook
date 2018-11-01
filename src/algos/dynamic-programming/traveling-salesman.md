@@ -5,10 +5,10 @@ Find a minimum-cost hamiltonian path or cycle in a complete graph.
 ## Held-Karp algorithm
 
 <div class="no-stretch">
-|           |                                                                |
-|-----------|----------------------------------------------------------------|
-| __Time__  | $O(2^nn^2)$                                                    |
-| __Space__ | $O(2^n\sqrt{n})$ (store $\mathrm{dp}[y][S]$ for $|S| = n - 1$) |
+|           |                                                             |
+|-----------|-------------------------------------------------------------|
+| __Time__  | $2^nn^2$                                                    |
+| __Space__ | $2^n\sqrt{n}$ (store $\mathrm{dp}[y][S]$ for $|S| = n - 1$) |
 </div>
 
 Let $\mathrm{dp}[y][S]$ be the minimum cost of a path from $0$ to $y$ through the intermediate vertices in $S$.
