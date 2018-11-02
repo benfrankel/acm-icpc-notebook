@@ -1,10 +1,10 @@
 % Topological Sort
 
 <div class="no-stretch">
-|         |             |
-|---------|-------------|
-|__Time__ | $|V| + |E|$ |
-|__Space__| $|V|$       |
+|           |             |
+|-----------|-------------|
+| __Time__  | $|V| + |E|$ |
+| __Space__ | $|V|$       |
 </div>
 
 ## Data Structures

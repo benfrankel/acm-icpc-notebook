@@ -1,4 +1,4 @@
-# Competitive Programming Notebook
+# Competitive Programming Handbook
 This is an ACM ICPC resource written in Markdown that compiles to a single PDF file.
 
 ## Usage

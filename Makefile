@@ -25,7 +25,7 @@ target_structure += $(subst $(SRC_DIR)/,$(pdf_dir)/,$(source_structure))
 $(shell mkdir -p $(target_structure))
 
 # Pandoc flags
-PANDOC_FLAGS ?= -f markdown -t html5 --self-contained --highlight-style kate --css $(css_file) --katex='node_modules/katex/dist/katex.js'
+PANDOC_FLAGS ?= -f markdown -t html5 --self-contained --highlight-style kate --css $(css_file) --katex='node_modules/katex/dist/'
 
 
 ###############

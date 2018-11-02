@@ -1,17 +1,17 @@
 % Suffix Array (Naive)
 
 <div class="no-stretch">
-|         |                |
-|---------|----------------|
-|__Time__ | $n^2 \log n$   |
-|__Space__| $n$            |
+|           |                   |
+|-----------|-------------------|
+| __Time__  | $n^2\cdot\log{n}$ |
+| __Space__ | $n$               |
 </div>
 
 ## Data Structures
-| Name    | Type                              | Initial Value              |
-|:-------:|:---------------------------------:|:--------------------------:|
-| `arr`   | `int[]`                           | `[0]*n`                    |
-| `str`   | `string`                          | input                      |
+| Name  | Type     | Initial Value |
+|:-----:|:--------:|:-------------:|
+| `arr` | `int[]`  | `[0]*n`       |
+| `str` | `string` | input         |
 
 ## Algorithm
 ```java

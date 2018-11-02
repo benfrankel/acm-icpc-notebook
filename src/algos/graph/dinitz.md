@@ -16,13 +16,13 @@
 ```c++
 Flow flow = 0;
 for (;;) {
-    // LevelBFS skips (u → v) where residual[u][v] == 0 and stops at sink
+    // LevelBFS skips (u → v) where residual[u][v] == 0 (and stops at sink)
     // Returns a DAG of edges seen from each vertex traversed
     Map<Vertex, Stack<Vertex>> layered;
     if (!LevelBFS(residual, source, sink, &layered)) break;
     
     for (;;) {
-        // PathDFS pops edges when it backtracks and stops at sink
+        // PathDFS pops edges when it backtracks (and stops at sink)
         Map<Vertex, Vertex> prev;
         if (!PathDFS(layered, source, sink, &prev)) break;
         

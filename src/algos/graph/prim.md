@@ -1,17 +1,16 @@
 % Prim's Algorithm
 
 <div class="no-stretch">
-|         |                        |
-|---------|------------------------|
-|__Time__ | $(|E| + |V|)\log{|V|}$ |
-|__Space__| ${|V|}^2$              |
+|           |                        |
+|-----------|------------------------|
+| __Time__  | $(|E| + |V|)\log{|V|}$ |
+| __Space__ | ${|V|}^2$              |
 </div>
 
 ## Data Structures
 | Name      | Type                                  | Initial Value  |
 |:---------:|:-------------------------------------:|:--------------:|
 | `front`   | `PriorityQueue<(Weight, Vertex)>`     | `[(0, start)]` |
-| `visited` | `Set<Vertex>`                         | `{}`           |
 | `parent`  | `Map<Vertex, Vertex>`                 | `{}`           |
 | `cost`    | `Map<Vertex, Weight>`                 | `{}`           |
 | `tree`    | `Map<Vertex, List<(Weight, Vertex)>>` | `{}`           |
@@ -22,8 +21,7 @@ while (!front.empty()) {
     (Weight w, Vertex u) = front.top();
     front.pop();
     
-    if (visited.has(u)) continue;
-    visited.add(u);
+    if (cost.has(u) && w > cost[u]) continue;
     
     // Visit u
     

@@ -1,17 +1,16 @@
 % Dijkstra's Algorithm
 
 <div class="no-stretch">
-|         |                        |
-|---------|------------------------|
-|__Time__ | $(|E| + |V|)\log{|V|}$ |
-|__Space__| ${|V|}^2$              |
+|           |                        |
+|-----------|------------------------|
+| __Time__  | $(|E| + |V|)\log{|V|}$ |
+| __Space__ | ${|V|}^2$              |
 </div>
 
 ## Data Structures
 | Name      | Type                                | Initial Value  |
 |:---------:|:-----------------------------------:|:--------------:|
 | `front`   | `PriorityQueue<(Distance, Vertex)>` | `[(0, start)]` |
-| `visited` | `Set<Vertex>`                       | `{}`           |
 | `prev?`   | `Map<Vertex, Vertex>`               | `{}`           |
 | `dist`    | `Map<Vertex, Distance>`             | `{start: 0}`   |
 
@@ -21,8 +20,7 @@ while (!front.empty()) {
     (Distance d, Vertex u) = front.top();
     front.pop();
     
-    if (visited.has(u)) continue;
-    visited.add(u);
+    if (dist.has(u) && d > dist[u]) continue;
     
     // Visit u
     

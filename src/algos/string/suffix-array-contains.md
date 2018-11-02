@@ -1,18 +1,18 @@
 % Suffix Array Contains
 
 <div class="no-stretch">
-|         |                |
-|---------|----------------|
-|__Time__ | $O(m log n)$   |
-|__Space__| $O(1)$         |
+|           |                 |
+|-----------|-----------------|
+| __Time__  | $m\cdot\log{n}$ |
+| __Space__ | $1$             |
 </div>
 
 ## Data Structures
-| Name    | Type                              | Initial Value              |
-|:-------:|:---------------------------------:|:--------------------------:|
-| `suffix`| `int[]`                           | suffixArr(str)             |
-| `str`   | `string`                          | input string (length n)    |
-| `target`| `string`                          | target string (length m)   |
+| Name     | Type     | Initial Value            |
+|:--------:|:--------:|:------------------------:|
+| `suffix` | `int[]`  | suffixArr(str)           |
+| `str`    | `string` | input string (length n)  |
+| `target` | `string` | target string (length m) |
 
 ## Algorithm
 ```java
@@ -33,6 +33,4 @@ return false;
 ```
 
 ## Results
-- returns `true` if `target` is contained in `str`. Returns false otherwise
-
-## Notes
+- Returns `true` iff `target` is contained in `str`.

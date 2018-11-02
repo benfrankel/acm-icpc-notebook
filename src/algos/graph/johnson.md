@@ -1,10 +1,10 @@
 % Johnson's Algorithm
 
 <div class="no-stretch">
-|         |                           |
-|---------|---------------------------|
-|__Time__ | $(|E| + |V|)|V|\log{|V|}$ |
-|__Space__| ${|V|}^2$                 |
+|           |                           |
+|-----------|---------------------------|
+| __Time__  | $(|E| + |V|)|V|\log{|V|}$ |
+| __Space__ | ${|V|}^2$                 |
 </div>
 
 ## Data Structures

@@ -1,10 +1,10 @@
 % Edmonds-Karp
 
 <div class="no-stretch">
-|         |                   |
-|---------|-------------------|
-|__Time__ | $|V|\cdot{|E|}^2$ |
-|__Space__| $|V|$             |
+|           |                   |
+|-----------|-------------------|
+| __Time__  | $|V|\cdot{|E|}^2$ |
+| __Space__ | $|V|$             |
 </div>
 
 ## Data Structures
@@ -17,7 +17,7 @@
 Flow flow = 0;
 for (;;) {
     // Find an augmenting path
-    // PathBFS skips (u → v) where residual[u][v] == 0 and stops at sink
+    // PathBFS skips (u → v) where residual[u][v] == 0 (and stops at sink)
     Map<Vertex, Vertex> prev;
     if (!PathBFS(residual, source, sink, &prev) break;
     
