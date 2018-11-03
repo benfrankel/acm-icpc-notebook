@@ -13,7 +13,7 @@ struct Line {
     Line(Point p, Point q): a(p.y - q.y), b(q.x - p.x), c(-a * p.x - b * p.y) { normalize(); }
     
     void normalize() {
-        double z = sqrt(a * a + b * b);
+        double z = hypot(a, b);
         if (a < 0 && b < 0) z = -z;
         a /= z; b /= z; c /= z;
     }
@@ -22,7 +22,7 @@ struct Line {
 /* Line */
 string _s(Line m,...) { return '(' + _s(m.a) + "x + " + _s(m.b) + "y + " + _s(m.c) + " = 0)"; }
 Point normal(Line m) { return Point(m.a, m.b); }
-Point tangent(Line m) { return Point(m.b, -m.a); }
+Point tangent(Line m) { return perp(normal(m)); }
 
 /* Point, Line */
 double sdist(Point p, Line m) { return m.a * p.x + m.b * p.y + m.c; }

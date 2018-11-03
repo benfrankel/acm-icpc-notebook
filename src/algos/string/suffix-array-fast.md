@@ -46,6 +46,6 @@ for(int k = 1; k < n; k <<= 1) {
 - `suffix[i]` is the starting index of the `i`th lexicographical suffix of `str`. Suffixes that share common starting runs will be stored in contiguous blocks of the array.
 
 ## Notes
-- Only works for single strings. If a suffix data structure is needed for multiple strings, look into an actual tree structure.
+- Only works for single strings. For multiple strings, look into an actual tree structure.
 - This is fast enough for $n \le 100,000$. If more speed is needed, implement a radix sort.
 - A special character (often `$`) should be appended to the string to help this construction.

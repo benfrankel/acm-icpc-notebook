@@ -22,8 +22,9 @@ struct Point {
     _sca(/)
 };
 
-Point operator*(double t, Point p) { return p * t; }
 string _s(Point p,...) { return _s(make_pair(p.x, p.y)); }
+Point operator*(double t, Point p) { return p * t; }
+Point perp(Point p) { return Point(p.y, -p.x); }
 
 /* Dot product */
 double dot(Point p, Point q) { return p.x * q.x + p.y * q.y; }
@@ -40,4 +41,6 @@ double angle(Point p, Point q) { return acos(proj(p, q) / abs(p)); }
 double cross(Point p, Point q) { return p.x * q.y - p.y * q.x; }
 double pgram(Point p, Point q) { return abs(cross(p, q)); }
 double triangle(Point p, Point q) { return pgram(p, q) / 2; }
+bool ccw(Point p, Point q, Point r) { return cross(q - p, r - p) >= eps; }
+bool collinear(Point p, Point q, Point r) { return abs(cross(q - p, r - p)) < eps; }
 ```

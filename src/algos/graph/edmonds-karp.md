@@ -45,4 +45,4 @@ for (;;) {
 
 ## Notes
 - Fails on graphs with self-loops, parallel edges, and bidirectional edges.
-- Can be fixed for those graphs by defining `struct Edge { Vertex v, Capacity, Flow, Edge *rev }`.
+- Can be fixed for those graphs by defining `struct Edge { Vertex to, Capacity, Flow, Edge *rev }`.
