@@ -8,6 +8,7 @@
 </div>
 
 ## Data Structures
+
 | Name    | Type                  | Initial Value |
 |:-------:|:---------------------:|:-------------:|
 | `front` | `Queue<Vertex>`       | `[start]`     |
@@ -15,6 +16,7 @@
 | `prev?` | `Map<Vertex, Vertex>` | `{}`          |
 
 ## Algorithm
+
 ```c++
 while (!front.empty()) {
     Vertex u = front.top();
@@ -35,9 +37,11 @@ while (!front.empty()) {
 ```
 
 ## Results
+
 - `seen` is the set of vertices connected to start.
 - `prev[v]` is the penultimate vertex on **some** shortest path from `start` to `v` (if they are connected).
 
 ## Notes
+
 - `seen` may be redundant if `prev` is used.
 - Finds shortest paths by number of edges (not weight).

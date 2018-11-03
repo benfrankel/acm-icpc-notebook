@@ -8,12 +8,14 @@
 </div>
 
 ## Data Structures
+
 | Name        | Type            | Initial Value |
 |:-----------:|:---------------:|:-------------:|
 | `sorted`    | `Set<Vertex>`   | `{}`          |
 | `topo`      | `List<Vertex>`  | `[]`          |
 
 ## Algorithm
+
 ```c++
 for (Vertex start : V) {
     if (sorted.has(start)) continue;
@@ -46,7 +48,9 @@ return true;
 ```
 
 ## Results
+
 - `i < j` implies there is no path from `topo[i]` to `topo[j]` (reverse topological order).
 
 ## Notes
+
 - Impossible with cycles (detected).

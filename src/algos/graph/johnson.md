@@ -8,6 +8,7 @@
 </div>
 
 ## Data Structures
+
 | Name       | Type                                  | Initial Value        |
 |:----------:|:-------------------------------------:|:--------------------:|
 | `adjusted` | `Map<Vertex, List<(Weight, Vertex)>>` | `G + {q: [V(0, v)]}` |
@@ -16,6 +17,7 @@
 | `dist`     | `Map<Vertex, Map<Vertex, Distance>>`  | `{}`                 |
 
 ## Algorithm
+
 ```c++
 if (!BellmanFord(adjusted, &height, q)) return false;
 adjusted.remove(q);
@@ -36,9 +38,11 @@ return true;
 ```
 
 ## Results
+
 - `dist[u][v] - height[u] + height[v]` is the distance from `u` to `v` (if they are connected).
 - `prev[u][v]` is the penultimate vertex on **some** shortest path from `u` to `v` (if they are connected).
 
 ## Notes
+
 - Bellman-Ford & reweighting can be skipped for graphs with non-negative edges.
 - Fails on negative cycles (detected during Bellman-Ford).

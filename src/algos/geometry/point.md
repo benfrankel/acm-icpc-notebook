@@ -25,8 +25,9 @@ struct Point {
 string _s(Point p,...) { return _s(make_pair(p.x, p.y)); }
 Point operator*(double t, Point p) { return p * t; }
 Point perp(Point p) { return Point(p.y, -p.x); }
+double angle(Point p) { return atan2(p.y, p.x); }
 
-/* Dot product */
+// Dot product
 double dot(Point p, Point q) { return p.x * q.x + p.y * q.y; }
 double norm(Point p) { return dot(p, p); }
 double abs(Point p) { return sqrt(norm(p)); }
@@ -35,9 +36,9 @@ Point unit(Point p) { return p / abs(p); }
 bool eq(Point p, Point q) { return dist(p, q) < eps; }
 double proj(Point p, Point q) { return dot(p, q) / abs(q); }
 Point project(Point p, Point q) { return dot(p, q) / norm(q) * q; }
-double angle(Point p, Point q) { return acos(proj(p, q) / abs(p)); }
+double angle(Point p, Point q) { return acos(proj(p, q) / abs(q)); }
 
-/* Cross product */
+// Cross product
 double cross(Point p, Point q) { return p.x * q.y - p.y * q.x; }
 double pgram(Point p, Point q) { return abs(cross(p, q)); }
 double triangle(Point p, Point q) { return pgram(p, q) / 2; }

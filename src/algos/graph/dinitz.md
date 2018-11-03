@@ -8,11 +8,13 @@
 </div>
 
 ## Data Structures
+
 | Name       | Type                                 | Initial Value      |
 |:----------:|:------------------------------------:|:------------------:|
 | `residual` | `Map<Vertex, Map<Vertex, Capacity>>` | `G + E{v: {u: 0}}` |
 
 ## Algorithm
+
 ```c++
 Flow flow = 0;
 for (;;) {
@@ -48,9 +50,11 @@ for (;;) {
 ```
 
 ## Results
+
 - `flow` is the maximum flow from `source` to `sink`.
 - `residual[v][u]` is the flow through `u → v` in **some** maximum flow.
 
 ## Notes
+
 - Fails on graphs with self-loops, parallel edges, and bidirectional edges.
-- Can be fixed for those graphs by defining `struct Edge { Vertex v, Capacity, Flow, Edge *rev }`.
+- Can be fixed for those graphs by defining `struct Edge { Vertex to, Capacity, Flow, Edge *rev }`.

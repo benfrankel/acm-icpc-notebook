@@ -9,16 +9,17 @@
 
 ## Data Structures
 
-| Name     | Type            | Initial Value                         |
-|:--------:|:---------------:|:-------------------------------------:|
-| `suffix` | `List<Integer>` | `[0, ..., n]`                         |
-| `rank`   | `List<Integer>` | `[str.charAt[0], ..., str.charAt[n]]` |
+| Name     | Type            | Initial Value                             |
+|:--------:|:---------------:|:-----------------------------------------:|
+| `suffix` | `List<Integer>` | `[0, ..., n - 1]`                         |
+| `rank`   | `List<Integer>` | `[str.charAt[0], ..., str.charAt[n - 1]]` |
+| `str`    | `String`        | input (length n)                          |
 
 ## Algorithm
 
 ```java
 // Sort array log_2(n) times according to the first 1, 2, 4, ... characters of each suffix
-int tempRank[str.length()];
+int tempRank[n];
 for(int k = 1; k < n; k <<= 1) {
 	// For each part, sort the array 2 times: First by the next k elements that have not been sorted, then stable sort the first k elements again
 	sort(suffix, (a, b) -> Integer.compare(a + k < n ? rank[a + k] : 0, b + k < n ? rank[b + k] : 0));
@@ -29,7 +30,7 @@ for(int k = 1; k < n; k <<= 1) {
 	tempRank[suffix[0]] = curRank;
 	for(int i = 1; i < n; i++) {
 		// Only if two contiguous suffixes don't have the same rank pair, increase the rank
-		if(!(rank[suffix[i]] == rank[suffix[i-1]] && rank[suffix[i]+k] == rank[suffix[i-1]+k])) {
+		if(rank[suffix[i]] != rank[suffix[i-1]] || rank[suffix[i]+k] != rank[suffix[i-1]+k]) {
 			curRank++;
 		}
 		tempRank[suffix[i]] = curRank;
@@ -37,7 +38,7 @@ for(int k = 1; k < n; k <<= 1) {
 
 	for(int i = 0; i < n; i++) rank[i] = tempRank[i];
 
-    // All ranks unique; sort done early
+    // All ranks unique, so sort is done early
 	if(rank[n-1] == n-1) break;
 }
 ```

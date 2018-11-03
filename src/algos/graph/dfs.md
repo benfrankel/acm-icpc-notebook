@@ -8,12 +8,14 @@
 </div>
 
 ## Data Structures
+
 | Name      | Type            | Initial Value |
 |:---------:|:---------------:|:-------------:|
 | `back`    | `Stack<Vertex>` | `[start]`     |
 | `visited` | `Set<Vertex>`   | `{}`          |
 
 ## Algorithm
+
 ```c++
 while (!back.empty()) {
     Vertex u = back.top();
@@ -45,4 +47,5 @@ while (!back.empty()) {
 ```
 
 ## Results
+
 - `visited` is the set of vertices connected to `start`.

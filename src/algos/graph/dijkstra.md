@@ -8,6 +8,7 @@
 </div>
 
 ## Data Structures
+
 | Name      | Type                                | Initial Value  |
 |:---------:|:-----------------------------------:|:--------------:|
 | `front`   | `PriorityQueue<(Distance, Vertex)>` | `[(0, start)]` |
@@ -15,6 +16,7 @@
 | `dist`    | `Map<Vertex, Distance>`             | `{start: 0}`   |
 
 ## Algorithm
+
 ```c++
 while (!front.empty()) {
     (Distance d, Vertex u) = front.top();
@@ -39,8 +41,10 @@ while (!front.empty()) {
 ```
 
 ## Results
+
 - `dist[v]` is the distance from `start` to `v` (if they are connected).
 - `prev[v]` is the penultimate vertex on **some** shortest path from `start` to `v` (if they are connected).
 
 ## Notes
+
 - Fails on graphs with negative edges (use Bellman-Ford).

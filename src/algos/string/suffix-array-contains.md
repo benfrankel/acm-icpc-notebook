@@ -8,11 +8,11 @@
 </div>
 
 ## Data Structures
-| Name     | Type     | Initial Value            |
-|:--------:|:--------:|:------------------------:|
-| `suffix` | `int[]`  | suffixArr(str)           |
-| `str`    | `string` | input string (length n)  |
-| `target` | `string` | target string (length m) |
+| Name     | Type            | Initial Value            |
+|:--------:|:---------------:|:------------------------:|
+| `suffix` | `List<Integer>` | suffixArr(str)           |
+| `str`    | `String`        | input string (length n)  |
+| `target` | `String`        | target string (length m) |
 
 ## Algorithm
 ```java

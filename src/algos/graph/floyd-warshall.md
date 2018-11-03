@@ -8,12 +8,14 @@
 </div>
 
 ## Data Structures
+
 | Name    | Type                              | Initial Value              |
 |:-------:|:---------------------------------:|:--------------------------:|
 | `next?` | `Map<(Vertex, Vertex), Vertex>`   | `{E(u, v): v}`             |
 | `dist`  | `Map<(Vertex, Vertex), Distance>` | `{E(u, v): w, V(v, v): 0}` |
 
 ## Algorithm
+
 ```c++
 for (Vertex m : V) {
     for (Vertex u : V) {
@@ -40,9 +42,11 @@ return true;
 ```
 
 ## Results
+
 - `dist[u, v]` is the distance from `u` to `v` (if they are connected).
 - `next[u, v]` is the second vertex on **some** shortest path from `u` to `v` (if they are connected and distinct).
 
 ## Notes
+
 - Johnson's Algorithm is faster for sparse graphs.
 - Fails on negative cycles (detected).

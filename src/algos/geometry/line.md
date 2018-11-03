@@ -19,22 +19,29 @@ struct Line {
     }
 };
 
-/* Line */
+// Line
 string _s(Line m,...) { return '(' + _s(m.a) + "x + " + _s(m.b) + "y + " + _s(m.c) + " = 0)"; }
 Point normal(Line m) { return Point(m.a, m.b); }
 Point tangent(Line m) { return perp(normal(m)); }
 
-/* Point, Line */
+// Point, Line
 double sdist(Point p, Line m) { return m.a * p.x + m.b * p.y + m.c; }
 _orient(Point, Line)
 Point project(Point p, Line m) { return p - normal(m) * sdist(p, m); }
 
-/* Line, Line */
+// Line, Line
 bool eq(Line m, Line n) { return eq(normal(m), normal(n)) && abs(m.c - n.c) < eps; }
 double cross(Line m, Line n) { return cross(normal(m), normal(n)); }
 double angle(Line m, Line n) { double a = angle(normal(m), normal(n)); return min(a, pi - a); }
 bool parallel(Line m, Line n) { return abs(cross(m, n)) < eps; }
 Point intersect(Line m, Line n) {
     return Point(m.b * n.c - m.c * n.b, m.c * n.a - m.a * n.c) / cross(m, n);
+}
+
+Point intersect(Point p, Point q, Point r, Point s) {
+    Point a = perp(s - r);
+    double b = cross(r, s);
+    double u = abs(dot(a, p) + b), v = abs(dot(a, q) + b);
+    return Point(p.x * v + q.x * u, p.y * v + q.y * u) / (u + v);
 }
 ```

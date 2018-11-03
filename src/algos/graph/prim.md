@@ -8,6 +8,7 @@
 </div>
 
 ## Data Structures
+
 | Name      | Type                                  | Initial Value  |
 |:---------:|:-------------------------------------:|:--------------:|
 | `front`   | `PriorityQueue<(Weight, Vertex)>`     | `[(0, start)]` |
@@ -16,6 +17,7 @@
 | `tree`    | `Map<Vertex, List<(Weight, Vertex)>>` | `{}`           |
 
 ## Algorithm
+
 ```c++
 while (!front.empty()) {
     (Weight w, Vertex u) = front.top();
@@ -46,7 +48,9 @@ while (!front.empty()) {
 ```
 
 ## Results
+
 - `tree` is **some** MST of `start`'s connected component.
 
 ## Notes
+
 - Fails on directed graphs.

@@ -7,17 +7,17 @@ struct Circle {
     Circle(Point o, double r): o(o), r(r) {}
 }
 
-/* Circle */
+// Circle
 string _s(Circle c) { return _s(make_pair(c.o, c.r)); }
 double area(Circle c) { return pi * c.r * c.r; }
 double circum(Circle c) { return 2 * pi * c.r; }
 
-/* Point, Circle */
+// Point, Circle
 double sdist(Point p, Circle c) { return dist(c.o, p) - c.r; }
 _orient(Point, Circle)
 Point project(Point p, Circle c) { return c.o + unit(p - c.o) * c.r; }
 
-/* Line, Circle */
+// Line, Circle
 double sdist(Line l, Circle c) { return dist(c.o, l) - c.r; }
 _orient(Line, Circle)
 void intersect(Line l, Circle c, Point &p, Point &q) {
@@ -26,7 +26,7 @@ void intersect(Line l, Circle c, Point &p, Point &q) {
     p = m + v; q = m - v;
 }
 
-/* Circle, Circle */
+// Circle, Circle
 double sdist(Circle c, Circle d) { return dist(c.o, d.o) - c.r - d.r; }
 int side(Circle c, Circle d) {
     double s = sdist(c, d);
